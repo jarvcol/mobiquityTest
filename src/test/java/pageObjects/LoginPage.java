@@ -1,7 +1,6 @@
 package pageObjects;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import util.UrlSetUp;
@@ -41,5 +40,18 @@ public class LoginPage extends BasePage {
 
     public void clickOnLoginButton(){
         loginButton.click();
+    }
+
+    //Validation Methods
+    public boolean isUserNameInputVisible(){
+        return super.isElementVisible(userInputField);
+    }
+
+    public boolean isPasswordInputVisible(){
+        return super.isElementVisible(userInputField);
+    }
+
+    public boolean isLoginButtonVisible(){
+        return super.isElementVisible(loginButton);
     }
 }

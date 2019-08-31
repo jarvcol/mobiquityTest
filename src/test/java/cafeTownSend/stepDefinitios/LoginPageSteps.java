@@ -24,6 +24,8 @@ public class LoginPageSteps{
 
     @Then("I should see the login form")
     public void iShouldSeeTheLoginForm() {
-        Assert.assertTrue(true);
+        Assert.assertTrue("User name input is not visible on login page", loginPage.isUserNameInputVisible());
+        Assert.assertTrue("Password input is not visible on login page", loginPage.isPasswordInputVisible());
+        Assert.assertTrue("Login button is not visible on login page", loginPage.isLoginButtonVisible());
     }
 }
