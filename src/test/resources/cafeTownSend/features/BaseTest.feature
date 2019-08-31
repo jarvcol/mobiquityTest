@@ -16,7 +16,7 @@ Feature: Login and logout functionality
     Given I navigate cafetownsend login page
     When I enter the 'Luke' in the userName field
     And I enter the 'Skywalker' in the password field
-    And I click on the login button
+    And I click on the logIn button
     Then I should the 'Luke' in the greeting message
     When I click on the logOut button
     Then I should see the login form

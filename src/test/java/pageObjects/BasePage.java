@@ -17,11 +17,6 @@ public class BasePage {
         this.driver = driver;
     }
 
-    public BasePage(WebDriver driver, int timeOutInSec){
-        wait = new WebDriverWait(driver, timeOutInSec);
-        this.driver = driver;
-    }
-
     protected WebDriverWait getWait(){
         return wait;
     }
