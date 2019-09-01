@@ -10,9 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 import java.util.Optional;
 
-public class ListView extends BasePage {
+public class EmployeeListView extends BasePage {
 
-    public ListView(WebDriver driver) {
+    public EmployeeListView(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
@@ -47,5 +47,11 @@ public class ListView extends BasePage {
     private WebElement filterListByName(String fullName){
         Optional<WebElement> employee = employeeList.stream().filter(x -> x.getText().equals(fullName)).findFirst();
         return employee.get();
+    }
+
+    //Validation Methods
+    public boolean areEmployeeInListVisible(){
+        getWait().until(ExpectedConditions.visibilityOfAllElements(employeeList));
+       return employeeList.stream().anyMatch(x -> !(x.isDisplayed()));
     }
 }

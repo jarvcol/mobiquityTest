@@ -1,5 +1,6 @@
 package mobiquity.stepDefinitios;
 
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
@@ -24,5 +25,10 @@ public class AuthenticatedUserSteps {
     @When("I click on the logOut button")
     public void iClickOnTheLogOutButton() {
         userMainPage.clickOnLogOutButton();
+    }
+
+    @And("I should see the employee list")
+    public void iShouldSeeTheEmployeeList() {
+        Assert.assertTrue("Employee list is not visible", userMainPage.isEmployeeListVisible());
     }
 }

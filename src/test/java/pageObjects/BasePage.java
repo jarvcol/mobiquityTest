@@ -6,15 +6,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.FileReaderManager;
+import util.PageObjectManager;
 
 public class BasePage {
 
     private WebDriver driver;
     private WebDriverWait wait;
+    private PageObjectManager pageObjectManager;
 
     public BasePage(WebDriver driver){
         wait = new WebDriverWait(driver, FileReaderManager.getInstance().getConfigReader().getImplicitlyWait());
         this.driver = driver;
+    }
+
+    public BasePage(WebDriver driver, PageObjectManager pageObjectManager){
+        wait = new WebDriverWait(driver, FileReaderManager.getInstance().getConfigReader().getImplicitlyWait());
+        this.driver = driver;
+        this.pageObjectManager = pageObjectManager;
     }
 
     protected WebDriverWait getWait(){
@@ -23,6 +31,10 @@ public class BasePage {
 
     protected WebDriver getDriver(){
         return driver;
+    }
+
+    protected PageObjectManager getPageObjectManager(){
+        return pageObjectManager;
     }
 
     protected void NavigateTo(String url){

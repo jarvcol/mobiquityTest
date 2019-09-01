@@ -21,7 +21,6 @@ public class LoginPageSteps{
     @Given("I navigate cafetownsend login page")
     public void navigateToCafetownsendLoginPage() {
         loginPage.goToLoginPage();
-        testContext.setCurrentPage(loginPage);
     }
 
     @Then("I should see the login form")

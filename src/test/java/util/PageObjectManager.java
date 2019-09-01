@@ -1,8 +1,12 @@
 package util;
 
 import org.openqa.selenium.WebDriver;
+import pageObjects.EmployeeListView;
 import pageObjects.UserMainPage;
 import pageObjects.LoginPage;
+import pageObjects.employee.forms.AddEmployeeForm;
+import pageObjects.employee.forms.EditEmployeeForm;
+import pageObjects.employee.forms.EmployeeForm;
 
 public class PageObjectManager {
 
@@ -10,6 +14,9 @@ public class PageObjectManager {
 
     private LoginPage loginPage;
     private UserMainPage userMainPage;
+    private EmployeeListView listViewPage;
+    private EmployeeForm editEmployeeForm;
+    private EmployeeForm addEmployeeForm;
 
     public PageObjectManager(WebDriver driver) {
         this.driver = driver;
@@ -20,7 +27,18 @@ public class PageObjectManager {
     }
 
     public UserMainPage getUserMainPage() {
-        return (userMainPage == null) ? userMainPage = new UserMainPage(driver) : userMainPage;
+        return (userMainPage == null) ? userMainPage = new UserMainPage(driver, this) : userMainPage;
     }
 
+    public EmployeeListView getListViewPage() {
+        return (listViewPage == null) ? listViewPage = new EmployeeListView(driver) : listViewPage;
+    }
+
+    public EmployeeForm getAddEmployeeForm() {
+        return (addEmployeeForm == null) ? addEmployeeForm = new AddEmployeeForm(driver) : addEmployeeForm;
+    }
+
+    public EmployeeForm getEditEmployeeForm() {
+        return (editEmployeeForm == null) ? editEmployeeForm = new EditEmployeeForm(driver) : editEmployeeForm;
+    }
 }

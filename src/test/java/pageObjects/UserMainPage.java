@@ -7,11 +7,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageObjects.employee.forms.EmployeeForm;
+import util.PageObjectManager;
 
 public class UserMainPage extends BasePage {
 
-    public UserMainPage(WebDriver driver){
-        super(driver);
+    public UserMainPage(WebDriver driver, PageObjectManager pageObjectManager){
+        super(driver, pageObjectManager);
+        this.employeeListView = getPageObjectManager().getListViewPage();
         PageFactory.initElements(driver, this);
     }
 
@@ -32,7 +34,7 @@ public class UserMainPage extends BasePage {
     private WebElement greetingMessage;
 
     private EmployeeForm employeeForm;
-    private ListView listView;
+    private EmployeeListView employeeListView;
 
     //Page Methods
     public void clickOnLogOutButton(){
@@ -41,9 +43,25 @@ public class UserMainPage extends BasePage {
         actions.click(logOutButton).build().perform();
     }
 
+    public void clickOnAddButton(){
+        getWait().until(ExpectedConditions.visibilityOf(createEmployeeButton));
+        createEmployeeButton.click();
+        employeeForm = getPageObjectManager().getAddEmployeeForm();
+    }
+
+    public void clickOnEditButton(){
+        getWait().until(ExpectedConditions.visibilityOf(updateEmployeeButton));
+        updateEmployeeButton.click();
+        employeeForm = getPageObjectManager().getEditEmployeeForm();
+    }
+
     //Validation Methods
     public boolean greetingMessageContains(String userName){
         getWait().until(ExpectedConditions.visibilityOf(greetingMessage));
         return greetingMessage.getText().contains(userName);
+    }
+
+    public boolean isEmployeeListVisible(){
+        return employeeListView.areEmployeeInListVisible();
     }
 }
