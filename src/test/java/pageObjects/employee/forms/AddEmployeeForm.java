@@ -31,4 +31,23 @@ public class AddEmployeeForm extends EmployeeForm {
         getWait().until(ExpectedConditions.visibilityOf(addButton));
         addButton.click();
     }
+
+    //Validation Methods
+    public boolean isAddEmployeeButtonVisible(){
+        return super.isElementVisible(addButton);
+    }
+
+    public boolean isCancelButtonVisible(){
+        return super.isElementVisible(cancelButton);
+    }
+
+    @Override
+    public boolean isFormVisible(){
+        return super.isEmployeeEmailInputVisible() &&
+                super.isEmployeeLastNameInputVisible() &&
+                super.isEmployeeStartDateInputVisible() &&
+                super.isEmployeeNameInputVisible() &&
+                isAddEmployeeButtonVisible() && isCancelButtonVisible();
+    }
+
 }

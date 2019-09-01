@@ -52,6 +52,6 @@ public class EmployeeListView extends BasePage {
     //Validation Methods
     public boolean areEmployeeInListVisible(){
         getWait().until(ExpectedConditions.visibilityOfAllElements(employeeList));
-       return employeeList.stream().anyMatch(x -> !(x.isDisplayed()));
+       return employeeList.stream().allMatch(x -> x.isDisplayed());
     }
 }

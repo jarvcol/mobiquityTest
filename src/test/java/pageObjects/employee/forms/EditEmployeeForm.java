@@ -39,4 +39,26 @@ public class EditEmployeeForm extends EmployeeForm{
         getWait().until(ExpectedConditions.visibilityOf(deleteButton));
         deleteButton.click();
     }
+
+    //Validation Methods
+    public boolean isEditEmployeeButtonVisible(){
+        return super.isElementVisible(editButton);
+    }
+
+    public boolean isDeleteEmployeeButtonVisible(){
+        return super.isElementVisible(deleteButton);
+    }
+
+    public boolean isCancelButtonVisible(){
+        return super.isElementVisible(cancelButton);
+    }
+
+    @Override
+    public boolean isFormVisible(){
+        return super.isEmployeeEmailInputVisible() &&
+                super.isEmployeeLastNameInputVisible() &&
+                super.isEmployeeStartDateInputVisible() &&
+                super.isEmployeeNameInputVisible() &&
+                isEditEmployeeButtonVisible() && isDeleteEmployeeButtonVisible() && isCancelButtonVisible();
+    }
 }

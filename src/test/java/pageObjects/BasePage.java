@@ -1,9 +1,7 @@
 package pageObjects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.FileReaderManager;
 import util.PageObjectManager;
@@ -53,5 +51,20 @@ public class BasePage {
 
     protected boolean isElementVisible(WebElement element){
         return element.isDisplayed();
+    }
+
+    public boolean isAlertPresent(){
+        boolean foundAlert = false;
+        try {
+            wait.until(ExpectedConditions.alertIsPresent());
+            foundAlert = true;
+        } catch (TimeoutException exc) {
+            foundAlert = false;
+        }
+        return foundAlert;
+    }
+
+    public void closeAlert(){
+        driver.switchTo().alert().dismiss();
     }
 }

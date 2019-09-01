@@ -24,10 +24,10 @@ public class UserMainPage extends BasePage {
     @FindBy(css="#bAdd")
     private WebElement createEmployeeButton;
 
-    @FindBy(css="bEdit")
+    @FindBy(css="#bEdit")
     private WebElement updateEmployeeButton;
 
-    @FindBy(css="bDelete")
+    @FindBy(css="#bDelete")
     private WebElement deleteEmployeeButton;
 
     @FindBy(css="#greetings")
@@ -50,9 +50,18 @@ public class UserMainPage extends BasePage {
     }
 
     public void clickOnEditButton(){
-        getWait().until(ExpectedConditions.visibilityOf(updateEmployeeButton));
+        getWait().until(ExpectedConditions.and(
+                ExpectedConditions.visibilityOf(updateEmployeeButton),
+                ExpectedConditions.elementToBeClickable(updateEmployeeButton)));
         updateEmployeeButton.click();
         employeeForm = getPageObjectManager().getEditEmployeeForm();
+    }
+
+    public void clicOnDeleteButton(){
+        getWait().until(ExpectedConditions.and(
+                ExpectedConditions.visibilityOf(deleteEmployeeButton),
+                ExpectedConditions.elementToBeClickable(deleteEmployeeButton)));
+        deleteEmployeeButton.click();
     }
 
     //Validation Methods
@@ -63,5 +72,18 @@ public class UserMainPage extends BasePage {
 
     public boolean isEmployeeListVisible(){
         return employeeListView.areEmployeeInListVisible();
+    }
+
+    public boolean isEmployeeFormVisible(){
+        return employeeForm.isFormVisible();
+    }
+
+    public void clickOnEmployeeByIndex(int index){
+        employeeListView.clickOnEmployeeByIndex(index);
+    }
+
+    public boolean isWarningMessageDisplayed(){
+        getWait().until(ExpectedConditions.alertIsPresent());
+        return getDriver().switchTo().alert().getText().contains("Are you sure you want to delete");
     }
 }

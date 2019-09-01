@@ -30,6 +30,8 @@ public abstract class EmployeeForm extends BasePage {
     //Page Methods
     public abstract void cancelAction();
 
+    public abstract boolean isFormVisible();
+
     public abstract void perform();
 
     public void writeToEmployeeNameInput(String name){
@@ -50,5 +52,22 @@ public abstract class EmployeeForm extends BasePage {
     public void writeToEmployeeEmailInput(String email){
         getWait().until(ExpectedConditions.visibilityOf(emailInputField));
         emailInputField.sendKeys(email);
+    }
+
+    //Validation Methods
+    public boolean isEmployeeNameInputVisible(){
+        return super.isElementVisible(nameInputField);
+    }
+
+    public boolean isEmployeeLastNameInputVisible(){
+        return super.isElementVisible(lastNameInputField);
+    }
+
+    public boolean isEmployeeStartDateInputVisible(){
+        return super.isElementVisible(startDateInputField);
+    }
+
+    public boolean isEmployeeEmailInputVisible(){
+        return super.isElementVisible(emailInputField);
     }
 }
