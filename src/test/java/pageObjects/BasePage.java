@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import util.FileReaderManager;
 
@@ -13,11 +14,6 @@ public class BasePage {
 
     public BasePage(WebDriver driver){
         wait = new WebDriverWait(driver, FileReaderManager.getInstance().getConfigReader().getImplicitlyWait());
-        this.driver = driver;
-    }
-
-    public BasePage(WebDriver driver, int timeOutInSec){
-        wait = new WebDriverWait(driver, timeOutInSec);
         this.driver = driver;
     }
 
@@ -43,7 +39,7 @@ public class BasePage {
         }
     }
 
-    protected boolean isElementVisible(By by){
-        return driver.findElement(by).isDisplayed();
+    protected boolean isElementVisible(WebElement element){
+        return element.isDisplayed();
     }
 }

@@ -7,9 +7,10 @@
     <groupId>mobiquity.qa.test</groupId>
     <artifactId>mobiquityTest</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
-        <cucumber.version>4.2.6</cucumber.version>
+        <cucumber.version>4.3.0</cucumber.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -60,7 +61,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.7.0</version>
+                <version>3.8.0</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                     <source>1.8</source>
@@ -89,7 +90,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>auto1Test</projectName>
+                            <projectName>mobiquity</projectName>
                             <outputDirectory>${project.build.directory}/cucumber-report-html</outputDirectory>
                             <cucumberOutput>${project.build.directory}/cucumber.json</cucumberOutput>
                         </configuration>
@@ -98,5 +99,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

@@ -16,7 +16,7 @@ public class UrlSetUp {
                 url = "";
                 break;
             case prod:
-                url =  "http://cafetownsend-angular-rails.herokuapp.com/";
+                url =  "http://cafetownsend-angular-rails.herokuapp.com";
                 break;
         }
         return url;
