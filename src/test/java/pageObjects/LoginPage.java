@@ -3,6 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import util.UrlSetUp;
 
@@ -10,16 +11,17 @@ public class LoginPage extends BasePage {
 
     public LoginPage(WebDriver driver){
         super(driver);
+        PageFactory.initElements(driver, this);
     }
 
     //Page Elements
-    @FindBy(css="...")
+    @FindBy(css="#login-form input[ng-model='user.name']")
     private WebElement userInputField;
 
-    @FindBy(css="...")
+    @FindBy(css="#login-form input[ng-model='user.password']")
     private WebElement passwordInputField;
 
-    @FindBy(xpath="...")
+    @FindBy(css="#login-form button")
     private WebElement loginButton;
 
     //Page Methods
