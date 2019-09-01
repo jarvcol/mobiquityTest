@@ -19,4 +19,4 @@ Feature: Login and logout functionality
     And I click on the logIn button
     Then I should see 'Luke' in the greeting message
     When I click on the logOut button
-    Then I should see the login form
+    Then I should be in the login page

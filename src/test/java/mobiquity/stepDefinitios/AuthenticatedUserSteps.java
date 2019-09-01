@@ -1,4 +1,4 @@
-package cafeTownSend.stepDefinitios;
+package mobiquity.stepDefinitios;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;

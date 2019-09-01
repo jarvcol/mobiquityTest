@@ -35,7 +35,7 @@ public class UserMainPage extends BasePage {
     public void clickOnLogOutButton(){
         getWait().until(ExpectedConditions.visibilityOf(logOutButton));
         Actions actions = new Actions(getDriver());
-        actions.moveToElement(logOutButton).click().perform();
+        actions.click(logOutButton).build().perform();
     }
 
     //Validation Methods

@@ -61,4 +61,10 @@ public class LoginPage extends BasePage {
                 ExpectedConditions.visibilityOf(passwordInputField)));
         return super.isElementVisible(loginButton);
     }
+
+    public boolean isLoginCurrentPage(){
+        getWait().until(ExpectedConditions.urlContains("login"));
+        System.out.println("Current "+getDriver().getCurrentUrl()+" Expected "+UrlSetUp.getUrl()+"/login");
+        return (getDriver().getCurrentUrl().trim()).equals((UrlSetUp.getUrl()+"/login").trim());
+    }
 }

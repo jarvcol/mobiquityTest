@@ -1,4 +1,4 @@
-package cafeTownSend.stepDefinitios;
+package mobiquity.stepDefinitios;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -44,5 +44,10 @@ public class LoginPageSteps{
     @And("I click on the logIn button")
     public void iClickOnTheLogInButton() {
         loginPage.clickOnLoginButton();
+    }
+
+    @Then("I should be in the login page")
+    public void iShouldBeInTheLoginPage() {
+        Assert.assertTrue("User is not on login page as expected", loginPage.isLoginCurrentPage());
     }
 }
