@@ -6,7 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import util.UrlSetUp;
+import pageObjects.employee.forms.EmployeeForm;
 
 public class UserMainPage extends BasePage {
 
@@ -30,6 +30,9 @@ public class UserMainPage extends BasePage {
 
     @FindBy(css="#greetings")
     private WebElement greetingMessage;
+
+    private EmployeeForm employeeForm;
+    private ListView listView;
 
     //Page Methods
     public void clickOnLogOutButton(){
