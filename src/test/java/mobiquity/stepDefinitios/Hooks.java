@@ -20,6 +20,8 @@ public class Hooks{
 
     @After
     public void TearDownTest(Scenario scenario) {
+        if(testContext.getPageObjectManager().getUserMainPage().isAlertPresent())
+            testContext.getPageObjectManager().getUserMainPage().closeAlert();
         testContext.getWebDriverManager().closeDriver();
     }
 

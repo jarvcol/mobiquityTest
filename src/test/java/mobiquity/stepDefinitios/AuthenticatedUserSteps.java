@@ -1,5 +1,7 @@
 package mobiquity.stepDefinitios;
 
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
@@ -24,5 +26,46 @@ public class AuthenticatedUserSteps {
     @When("I click on the logOut button")
     public void iClickOnTheLogOutButton() {
         userMainPage.clickOnLogOutButton();
+    }
+
+    @And("I should see the employee list")
+    public void iShouldSeeTheEmployeeList() {
+        Assert.assertTrue("Employee list is not visible", userMainPage.isEmployeeListVisible());
+    }
+
+    @Given("I click on the Add employee button")
+    public void iClickOnTheAddEmployeeButton() {
+        userMainPage.clickOnAddButton();
+    }
+
+    @Then("I should see the Add employee form")
+    public void iShouldSeeTheAddEmployeeForm() {
+        Assert.assertTrue("Add employee form is not visible", userMainPage.isEmployeeFormVisible());
+    }
+
+    @When("I click on the Edit employee button")
+    public void iClickOnTheEditEmployeeButton() {
+        userMainPage.clickOnEditButton();
+    }
+
+    @Then("I should see the Edit employee form")
+    public void iShouldSeeTheEditEmployeeForm() {
+        Assert.assertTrue("Edit employee form is not visible", userMainPage.isEmployeeFormVisible());
+
+    }
+
+    @When("I click on the \'([^\\\"]*)\' employee on the list")
+    public void iClickOnTheEmployeeOnTheList(String index) {
+        userMainPage.clickOnEmployeeByIndex(Integer.parseInt(index));
+    }
+
+    @Then("I click on Delete button")
+    public void iClickOnDeleteButton() {
+        userMainPage.clicOnDeleteButton();
+    }
+
+    @Then("I should see a warning message")
+    public void iShouldSeeAWarningMessage() {
+        userMainPage.isWarningMessageDisplayed();
     }
 }

@@ -18,5 +18,6 @@ Feature: Login and logout functionality
     And I enter the 'Skywalker' in the password field
     And I click on the logIn button
     Then I should see 'Luke' in the greeting message
+    And I should see the employee list
     When I click on the logOut button
     Then I should be in the login page

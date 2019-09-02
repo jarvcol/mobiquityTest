@@ -27,7 +27,7 @@ public class WebDriverManager {
                 break;
             case chrome :
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("start-maximized");
+                chromeOptions.addArguments("--start-maximized");
                 chromeOptions.addArguments("--incognito");
                 chromeOptions.addArguments("--disable-cache");
                 chromeOptions.addArguments("--disable-notifications");
