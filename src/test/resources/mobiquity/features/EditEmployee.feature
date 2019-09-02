@@ -17,7 +17,7 @@ Feature: Edit employee functionality
     And I entered <startDate> on the employee stat date input
     And I entered <email> on the employee email input
     And I click on the edit employee button from the form
-    And I click on the '1' employee on the list
+    And I double click on the '1' employee on the list
     Then I should see the <startDate> new date on the employee information
     And I should see the <email> new email on the employee information
     And I should see the <name> new name on the employee information
