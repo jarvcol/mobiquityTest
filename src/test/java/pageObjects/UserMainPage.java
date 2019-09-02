@@ -82,10 +82,24 @@ public class UserMainPage extends BasePage {
 
     public void employeeFormPerformAction(){
         employeeForm.perform();
+        employeeListView.updateEmployeeList();
     }
 
     public boolean isEmployeeNameOnTheList(String fullName){
         return employeeListView.isEmployeeNameOnList(fullName);
+    }
+
+    public void clickOnEmployeeByFullName(String fullName){
+        employeeListView.clickOnEmployeeByName(fullName);
+    }
+
+    public void closeAlert(){
+        super.closeAlert();
+    }
+
+    public void acceptAlert(){
+        super.acceptAlert();
+        employeeListView.updateEmployeeList();
     }
 
     //Validation Methods

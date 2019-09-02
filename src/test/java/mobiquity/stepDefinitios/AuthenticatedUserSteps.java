@@ -98,4 +98,20 @@ public class AuthenticatedUserSteps {
         Assert.assertTrue("Employee "+name+" "+lastName+" is not on the list",
                 userMainPage.isEmployeeNameOnTheList(name+" "+lastName));
     }
+
+    @When("I click the employee (.*), (.*) in the employee list")
+    public void iClickTheEmployeeLastNameNameInTheEmployeeList(String lastName, String name) {
+        userMainPage.clickOnEmployeeByFullName(name+" "+lastName);
+    }
+
+    @And("I accept the warning message")
+    public void iAcceptTheWarningMessage() {
+        userMainPage.acceptAlert();
+    }
+
+    @Then("I should not see the employee (.*), (.*) in the employee list")
+    public void iShouldNotSeeTheEmployeeLastNameNameInTheEmployeeList(String lastName, String name) {
+        Assert.assertFalse("Employee "+name+" "+lastName+" is on the list",
+                userMainPage.isEmployeeNameOnTheList(name+" "+lastName));
+    }
 }

@@ -27,12 +27,12 @@ public class WebDriverManager {
                 break;
             case chrome :
                 ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--start-maximized");
                 chromeOptions.addArguments("--incognito");
                 chromeOptions.addArguments("--disable-cache");
                 chromeOptions.addArguments("--disable-notifications");
                 chromeOptions.addArguments("--disable-popup-blocking");
                 driver = new ChromeDriver(chromeOptions);
+                driver.manage().window().maximize();
                 break;
             case ie : driver = new InternetExplorerDriver();
                 break;

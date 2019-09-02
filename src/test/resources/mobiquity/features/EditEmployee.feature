@@ -17,3 +17,15 @@ Feature: Edit employee functionality
     When I click on the '3' employee on the list
     Then I click on Delete button
     Then I should see a warning message
+
+  Scenario Outline: Deleting an employee from the list
+    When I click the employee <lastName>, <name> in the employee list
+    And I click on Delete button
+    And I accept the warning message
+    Then I should not see the employee <lastName>, <name> in the employee list
+    Examples:
+      | name  | lastName |
+      | Harry | Plotter  |
+      | Alf   | Abet     |
+      | Avery | Niceman  |
+      | Dee   | Lishous  |
