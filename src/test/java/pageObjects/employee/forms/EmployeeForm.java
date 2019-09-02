@@ -36,21 +36,25 @@ public abstract class EmployeeForm extends BasePage {
 
     public void writeToEmployeeNameInput(String name){
         getWait().until(ExpectedConditions.visibilityOf(nameInputField));
+        nameInputField.clear();
         nameInputField.sendKeys(name);
     }
 
     public void writeToEmployeeLastNameInput(String lastName){
         getWait().until(ExpectedConditions.visibilityOf(lastNameInputField));
+        lastNameInputField.clear();
         lastNameInputField.sendKeys(lastName);
     }
 
     public void writeToEmployeeStartDateInput(String date){
         getWait().until(ExpectedConditions.visibilityOf(startDateInputField));
+        startDateInputField.clear();
         startDateInputField.sendKeys(date);
     }
 
     public void writeToEmployeeEmailInput(String email){
         getWait().until(ExpectedConditions.visibilityOf(emailInputField));
+        emailInputField.clear();
         emailInputField.sendKeys(email);
     }
 
@@ -69,5 +73,21 @@ public abstract class EmployeeForm extends BasePage {
 
     public boolean isEmployeeEmailInputVisible(){
         return super.isElementVisible(emailInputField);
+    }
+
+    public boolean employeeStartDateInputValueIs(String date){
+        return startDateInputField.getAttribute("value").equals(date);
+    }
+
+    public boolean employeeEmailInputValueIs(String email){
+        return emailInputField.getAttribute("value").equals(email);
+    }
+
+    public boolean employeeNameInputValueIs(String name){
+        return nameInputField.getAttribute("value").equals(name);
+    }
+
+    public boolean employeeLastNameInputValueIs(String lastName){
+        return lastNameInputField.getAttribute("value").equals(lastName);
     }
 }

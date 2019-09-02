@@ -19,7 +19,5 @@ Feature: Add employee functionality
     Then I should see the employee <lastName>, <name> in the employee list
     Examples:
       | name  | lastName | startDate  | email          |
-      | Harry | Plotter  | 2019-08-30 | test1@test.com |
       | Alf   | Abet     | 2019-08-30 | test2@test.com |
-      | Avery | Niceman  | 2019-08-30 | test3@test.com |
       | Dee   | Lishous  | 2019-08-30 | test4@test.com |

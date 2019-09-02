@@ -101,6 +101,11 @@ public class UserMainPage extends BasePage {
         //employeeListView.updateEmployeeList(); this method was intented to remove all duplicated and non existing employees
     }
 
+    public void doubleClickOnEmployeeByIndex(int index){
+        employeeListView.doubleClickOnEmployeeByIndex(index);
+        employeeForm = getPageObjectManager().getEditEmployeeForm();
+    }
+
     //Validation Methods
     public boolean greetingMessageContains(String userName){
         getWait().until(ExpectedConditions.visibilityOf(greetingMessage));
@@ -122,5 +127,13 @@ public class UserMainPage extends BasePage {
     public boolean isWarningMessageDisplayed(){
         getWait().until(ExpectedConditions.alertIsPresent());
         return getDriver().switchTo().alert().getText().contains("Are you sure you want to delete");
+    }
+
+    public boolean employeeStartDateIs(String date){
+        return employeeForm.employeeStartDateInputValueIs(date);
+    }
+
+    public boolean employeeEmailIs(String email){
+        return employeeForm.employeeEmailInputValueIs(email);
     }
 }

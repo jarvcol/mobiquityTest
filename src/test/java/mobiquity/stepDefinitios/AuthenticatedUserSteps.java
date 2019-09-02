@@ -93,6 +93,11 @@ public class AuthenticatedUserSteps {
         userMainPage.employeeFormPerformAction();
     }
 
+    @And("I click on the edit employee button from the form")
+    public void iClickOnTheEditEmployeeButtonFromTheForm() {
+        userMainPage.employeeFormPerformAction();
+    }
+
     @Then("I should see the employee (.*), (.*) in the employee list")
     public void iShouldSeeTheEmployeeLastNameNameInTheEmployeeList(String lastName, String name) {
         Assert.assertTrue("Employee "+name+" "+lastName+" is not on the list",
@@ -113,5 +118,22 @@ public class AuthenticatedUserSteps {
     public void iShouldNotSeeTheEmployeeLastNameNameInTheEmployeeList(String lastName, String name) {
         Assert.assertFalse("Employee "+name+" "+lastName+" is on the list",
                 userMainPage.isEmployeeNameOnTheList(name+" "+lastName));
+    }
+
+    @When("I double click on the \'([^\\\"]*)\' employee on the list")
+    public void iDoubleClickOnTheEmployeeOnTheList(String index) {
+        userMainPage.doubleClickOnEmployeeByIndex(Integer.parseInt(index));
+    }
+
+    @Then("I should see the (.*) new date on the employee information")
+    public void iShouldSeeTheStartDateNewDateOnTheEmployeeInformation(String date) {
+        Assert.assertTrue("Employee start date value is not the expected",
+                userMainPage.employeeStartDateIs(date));
+    }
+
+    @And("I should see the (.*) new email on the employee information")
+    public void iShouldSeeTheEmailNewEmailOnTheEmployeeInformation(String email) {
+        Assert.assertTrue("Employee email value is not the expected",
+                userMainPage.employeeEmailIs(email));
     }
 }
