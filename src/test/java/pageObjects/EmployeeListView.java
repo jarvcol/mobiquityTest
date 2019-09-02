@@ -76,8 +76,6 @@ public class EmployeeListView extends BasePage {
             catch (NoSuchElementException | StaleElementReferenceException ignored) {
             }
         }
-        // Original line removed due to StaleElementReferenceException
-        // employeeList.stream().forEach(x -> actions.moveToElement(x).pause(1000).build().perform());
         employeeList = null;
         employeeList = getDriver().findElements(By.cssSelector(employeeListLocator));
     }

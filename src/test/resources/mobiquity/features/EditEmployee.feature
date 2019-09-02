@@ -22,7 +22,11 @@ Feature: Edit employee functionality
     When I click the employee <lastName>, <name> in the employee list
     And I click on Delete button
     And I accept the warning message
-    Then I should not see the employee <lastName>, <name> in the employee list
+    When I click on the logOut button
+    And I enter the 'Luke' in the userName field
+    And I enter the 'Skywalker' in the password field
+    And I click on the logIn button
+    And I should not see the employee <lastName>, <name> in the employee list
     Examples:
       | name  | lastName |
       | Harry | Plotter  |

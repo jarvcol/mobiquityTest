@@ -82,7 +82,6 @@ public class UserMainPage extends BasePage {
 
     public void employeeFormPerformAction(){
         employeeForm.perform();
-        employeeListView.updateEmployeeList();
     }
 
     public boolean isEmployeeNameOnTheList(String fullName){
@@ -99,7 +98,7 @@ public class UserMainPage extends BasePage {
 
     public void acceptAlert(){
         super.acceptAlert();
-        employeeListView.updateEmployeeList();
+        //employeeListView.updateEmployeeList(); this method was intented to remove all duplicated and non existing employees
     }
 
     //Validation Methods
