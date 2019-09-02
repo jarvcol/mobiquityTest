@@ -64,6 +64,43 @@ public class UserMainPage extends BasePage {
         deleteEmployeeButton.click();
     }
 
+    public void writeToEmployeeNameInputField(String name){
+        employeeForm.writeToEmployeeNameInput(name);
+    }
+
+    public void writeToEmployeeLastNameInputField(String lastName){
+        employeeForm.writeToEmployeeLastNameInput(lastName);
+    }
+
+    public void writeToEmployeeStartDateInputField(String date){
+        employeeForm.writeToEmployeeStartDateInput(date);
+    }
+
+    public void writeToEmployeeEmailInputField(String email){
+        employeeForm.writeToEmployeeEmailInput(email);
+    }
+
+    public void employeeFormPerformAction(){
+        employeeForm.perform();
+    }
+
+    public boolean isEmployeeNameOnTheList(String fullName){
+        return employeeListView.isEmployeeNameOnList(fullName);
+    }
+
+    public void clickOnEmployeeByFullName(String fullName){
+        employeeListView.clickOnEmployeeByName(fullName);
+    }
+
+    public void closeAlert(){
+        super.closeAlert();
+    }
+
+    public void acceptAlert(){
+        super.acceptAlert();
+        //employeeListView.updateEmployeeList(); this method was intented to remove all duplicated and non existing employees
+    }
+
     //Validation Methods
     public boolean greetingMessageContains(String userName){
         getWait().until(ExpectedConditions.visibilityOf(greetingMessage));

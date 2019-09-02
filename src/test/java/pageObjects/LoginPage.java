@@ -31,11 +31,13 @@ public class LoginPage extends BasePage {
 
     public void writeToUserInputField(String userName){
         getWait().until(ExpectedConditions.visibilityOf(userInputField));
+        userInputField.clear();
         userInputField.sendKeys(userName);
     }
 
     public void writeToPasswordInputField(String password){
         getWait().until(ExpectedConditions.visibilityOf(passwordInputField));
+        passwordInputField.clear();
         passwordInputField.sendKeys(password);
     }
 
@@ -64,7 +66,6 @@ public class LoginPage extends BasePage {
 
     public boolean isLoginCurrentPage(){
         getWait().until(ExpectedConditions.urlContains("login"));
-        System.out.println("Current "+getDriver().getCurrentUrl()+" Expected "+UrlSetUp.getUrl()+"/login");
         return (getDriver().getCurrentUrl().trim()).equals((UrlSetUp.getUrl()+"/login").trim());
     }
 }

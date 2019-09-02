@@ -64,7 +64,11 @@ public class BasePage {
         return foundAlert;
     }
 
-    public void closeAlert(){
+    protected void closeAlert(){
         driver.switchTo().alert().dismiss();
+    }
+
+    protected void acceptAlert(){
+        driver.switchTo().alert().accept();
     }
 }
