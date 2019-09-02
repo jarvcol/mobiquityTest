@@ -29,7 +29,7 @@ public class AuthenticatedUserSteps {
 
     @And("I should see the employee list")
     public void iShouldSeeTheEmployeeList() {
-        Assert.assertTrue("Employee list is not visible", userMainPage.isEmployeeListVisible());
+        Assert.assertTrue("Employee list is not visible", userMainPage.getEmployeeListView().areEmployeeInListVisible());
     }
 
     @When("I click on the Add employee button")
@@ -39,7 +39,7 @@ public class AuthenticatedUserSteps {
 
     @Then("I should see the Add employee form")
     public void iShouldSeeTheAddEmployeeForm() {
-        Assert.assertTrue("Add employee form is not visible", userMainPage.isEmployeeFormVisible());
+        Assert.assertTrue("Add employee form is not visible", userMainPage.getEmployeeForm().isFormVisible());
     }
 
     @When("I click on the Edit employee button")
@@ -49,13 +49,13 @@ public class AuthenticatedUserSteps {
 
     @Then("I should see the Edit employee form")
     public void iShouldSeeTheEditEmployeeForm() {
-        Assert.assertTrue("Edit employee form is not visible", userMainPage.isEmployeeFormVisible());
+        Assert.assertTrue("Edit employee form is not visible", userMainPage.getEmployeeForm().isFormVisible());
 
     }
 
     @When("I click on the \'([^\\\"]*)\' employee on the list")
     public void iClickOnTheEmployeeOnTheList(String index) {
-        userMainPage.clickOnEmployeeByIndex(Integer.parseInt(index));
+        userMainPage.getEmployeeListView().clickOnEmployeeByIndex(Integer.parseInt(index));
     }
 
     @Then("I click on Delete button")
@@ -70,22 +70,22 @@ public class AuthenticatedUserSteps {
 
     @When("I entered (.*) on the employee name input")
     public void iEnteredNameOnTheEmployeeNameInput(String name) {
-        userMainPage.writeToEmployeeNameInputField(name);
+        userMainPage.getEmployeeForm().writeToEmployeeNameInput(name);
     }
 
     @And("^I entered (.*) on the employee last name input")
     public void iEnteredLastNameOnTheEmployeeLastNameInput(String lastName) {
-        userMainPage.writeToEmployeeLastNameInputField(lastName);
+        userMainPage.getEmployeeForm().writeToEmployeeLastNameInput(lastName);
     }
 
     @And("I entered (.*) on the employee stat date input")
     public void iEnteredStartDateOnTheEmployeeStatDateInput(String startDate) {
-        userMainPage.writeToEmployeeStartDateInputField(startDate);
+        userMainPage.getEmployeeForm().writeToEmployeeStartDateInput(startDate);
     }
 
     @And("I entered (.*) on the employee email input")
     public void iEnteredEmailOnTheEmployeeEmailInput(String email) {
-        userMainPage.writeToEmployeeEmailInputField(email);
+        userMainPage.getEmployeeForm().writeToEmployeeEmailInput(email);
     }
 
     @And("I click on the add employee button from the form")
@@ -93,15 +93,20 @@ public class AuthenticatedUserSteps {
         userMainPage.employeeFormPerformAction();
     }
 
+    @And("I click on the edit employee button from the form")
+    public void iClickOnTheEditEmployeeButtonFromTheForm() {
+        userMainPage.employeeFormPerformAction();
+    }
+
     @Then("I should see the employee (.*), (.*) in the employee list")
     public void iShouldSeeTheEmployeeLastNameNameInTheEmployeeList(String lastName, String name) {
         Assert.assertTrue("Employee "+name+" "+lastName+" is not on the list",
-                userMainPage.isEmployeeNameOnTheList(name+" "+lastName));
+                userMainPage.getEmployeeListView().isEmployeeNameOnList(name+" "+lastName));
     }
 
     @When("I click the employee (.*), (.*) in the employee list")
     public void iClickTheEmployeeLastNameNameInTheEmployeeList(String lastName, String name) {
-        userMainPage.clickOnEmployeeByFullName(name+" "+lastName);
+        userMainPage.getEmployeeListView().clickOnEmployeeByName(name+" "+lastName);
     }
 
     @And("I accept the warning message")
@@ -112,6 +117,35 @@ public class AuthenticatedUserSteps {
     @Then("I should not see the employee (.*), (.*) in the employee list")
     public void iShouldNotSeeTheEmployeeLastNameNameInTheEmployeeList(String lastName, String name) {
         Assert.assertFalse("Employee "+name+" "+lastName+" is on the list",
-                userMainPage.isEmployeeNameOnTheList(name+" "+lastName));
+                userMainPage.getEmployeeListView().isEmployeeNameOnList(name+" "+lastName));
+    }
+
+    @When("I double click on the \'([^\\\"]*)\' employee on the list")
+    public void iDoubleClickOnTheEmployeeOnTheList(String index) {
+        userMainPage.doubleClickOnEmployeeByIndex(Integer.parseInt(index));
+    }
+
+    @Then("I should see the (.*) new date on the employee information")
+    public void iShouldSeeTheStartDateNewDateOnTheEmployeeInformation(String date) {
+        Assert.assertTrue("Employee start date value is not the expected",
+                userMainPage.getEmployeeForm().employeeStartDateInputValueIs(date));
+    }
+
+    @And("I should see the (.*) new email on the employee information")
+    public void iShouldSeeTheEmailNewEmailOnTheEmployeeInformation(String email) {
+        Assert.assertTrue("Employee email value is not the expected",
+                userMainPage.getEmployeeForm().employeeEmailInputValueIs(email));
+    }
+
+    @And("I should see the (.*) new last name on the employee information")
+    public void iShouldSeeTheLastNameNewLastNameOnTheEmployeeInformation(String lastName) {
+        Assert.assertTrue("Employee email value is not the expected",
+                userMainPage.getEmployeeForm().employeeLastNameInputValueIs(lastName));
+    }
+
+    @And("I should see the (.*) new name on the employee information")
+    public void iShouldSeeTheNameNewNameOnTheEmployeeInformation(String name) {
+        Assert.assertTrue("Employee email value is not the expected",
+                userMainPage.getEmployeeForm().employeeNameInputValueIs(name));
     }
 }

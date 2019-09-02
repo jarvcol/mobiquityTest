@@ -64,32 +64,8 @@ public class UserMainPage extends BasePage {
         deleteEmployeeButton.click();
     }
 
-    public void writeToEmployeeNameInputField(String name){
-        employeeForm.writeToEmployeeNameInput(name);
-    }
-
-    public void writeToEmployeeLastNameInputField(String lastName){
-        employeeForm.writeToEmployeeLastNameInput(lastName);
-    }
-
-    public void writeToEmployeeStartDateInputField(String date){
-        employeeForm.writeToEmployeeStartDateInput(date);
-    }
-
-    public void writeToEmployeeEmailInputField(String email){
-        employeeForm.writeToEmployeeEmailInput(email);
-    }
-
     public void employeeFormPerformAction(){
         employeeForm.perform();
-    }
-
-    public boolean isEmployeeNameOnTheList(String fullName){
-        return employeeListView.isEmployeeNameOnList(fullName);
-    }
-
-    public void clickOnEmployeeByFullName(String fullName){
-        employeeListView.clickOnEmployeeByName(fullName);
     }
 
     public void closeAlert(){
@@ -101,26 +77,27 @@ public class UserMainPage extends BasePage {
         //employeeListView.updateEmployeeList(); this method was intented to remove all duplicated and non existing employees
     }
 
+    public void doubleClickOnEmployeeByIndex(int index){
+        employeeListView.doubleClickOnEmployeeByIndex(index);
+        employeeForm = getPageObjectManager().getEditEmployeeForm();
+    }
+
     //Validation Methods
     public boolean greetingMessageContains(String userName){
         getWait().until(ExpectedConditions.visibilityOf(greetingMessage));
         return greetingMessage.getText().contains(userName);
     }
 
-    public boolean isEmployeeListVisible(){
-        return employeeListView.areEmployeeInListVisible();
-    }
-
-    public boolean isEmployeeFormVisible(){
-        return employeeForm.isFormVisible();
-    }
-
-    public void clickOnEmployeeByIndex(int index){
-        employeeListView.clickOnEmployeeByIndex(index);
-    }
-
     public boolean isWarningMessageDisplayed(){
         getWait().until(ExpectedConditions.alertIsPresent());
         return getDriver().switchTo().alert().getText().contains("Are you sure you want to delete");
+    }
+
+    public EmployeeForm getEmployeeForm(){
+        return employeeForm;
+    }
+
+    public EmployeeListView getEmployeeListView(){
+        return employeeListView;
     }
 }
