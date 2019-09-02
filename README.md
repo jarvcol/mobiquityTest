@@ -21,9 +21,9 @@ mvn clean compile
 mvn verify
 
 Reports can be found in the target folder once executed (depending on the way you execute the test different reports may appear). There are multiple reports but best one should be located in ..target/cucumber-report-html/cucumber-html-reports:
+![report](https://github.com/jarvcol/mobiquityTest/tree/master/reportImg/report1.png)
 
-
-
+![report](https://github.com/jarvcol/mobiquityTest/tree/master/reportImg/report2.png)
 
 Please note that project is made on Behavior Driven Development (BDD) based on the bonus points list.
 
