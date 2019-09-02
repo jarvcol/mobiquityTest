@@ -54,4 +54,9 @@ public class EmployeeListView extends BasePage {
         getWait().until(ExpectedConditions.visibilityOfAllElements(employeeList));
        return employeeList.stream().allMatch(x -> x.isDisplayed());
     }
+
+    public boolean isEmployeeNameOnList(String fullName){
+        getWait().until(ExpectedConditions.visibilityOfAllElements(employeeList));
+        return filterListByName(fullName) != null;
+    }
 }
