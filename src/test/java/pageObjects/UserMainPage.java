@@ -64,32 +64,8 @@ public class UserMainPage extends BasePage {
         deleteEmployeeButton.click();
     }
 
-    public void writeToEmployeeNameInputField(String name){
-        employeeForm.writeToEmployeeNameInput(name);
-    }
-
-    public void writeToEmployeeLastNameInputField(String lastName){
-        employeeForm.writeToEmployeeLastNameInput(lastName);
-    }
-
-    public void writeToEmployeeStartDateInputField(String date){
-        employeeForm.writeToEmployeeStartDateInput(date);
-    }
-
-    public void writeToEmployeeEmailInputField(String email){
-        employeeForm.writeToEmployeeEmailInput(email);
-    }
-
     public void employeeFormPerformAction(){
         employeeForm.perform();
-    }
-
-    public boolean isEmployeeNameOnTheList(String fullName){
-        return employeeListView.isEmployeeNameOnList(fullName);
-    }
-
-    public void clickOnEmployeeByFullName(String fullName){
-        employeeListView.clickOnEmployeeByName(fullName);
     }
 
     public void closeAlert(){
@@ -112,28 +88,16 @@ public class UserMainPage extends BasePage {
         return greetingMessage.getText().contains(userName);
     }
 
-    public boolean isEmployeeListVisible(){
-        return employeeListView.areEmployeeInListVisible();
-    }
-
-    public boolean isEmployeeFormVisible(){
-        return employeeForm.isFormVisible();
-    }
-
-    public void clickOnEmployeeByIndex(int index){
-        employeeListView.clickOnEmployeeByIndex(index);
-    }
-
     public boolean isWarningMessageDisplayed(){
         getWait().until(ExpectedConditions.alertIsPresent());
         return getDriver().switchTo().alert().getText().contains("Are you sure you want to delete");
     }
 
-    public boolean employeeStartDateIs(String date){
-        return employeeForm.employeeStartDateInputValueIs(date);
+    public EmployeeForm getEmployeeForm(){
+        return employeeForm;
     }
 
-    public boolean employeeEmailIs(String email){
-        return employeeForm.employeeEmailInputValueIs(email);
+    public EmployeeListView getEmployeeListView(){
+        return employeeListView;
     }
 }
